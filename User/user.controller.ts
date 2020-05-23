@@ -6,3 +6,7 @@ function getAllUser() {
   return repository.getAllUser();
 }
 
+function getUser(userId: string) {
+  return repository.getUser(userId);
+}
+

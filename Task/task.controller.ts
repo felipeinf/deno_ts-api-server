@@ -12,6 +12,8 @@ function getTask(id: string) {
 
 function addTask(task: Task) {
   task.completed = false;
+  task.createdAt = new Date();
+  task.updateAt = task.createdAt;
   return repository.addTask(task);
 }
 

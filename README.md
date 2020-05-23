@@ -16,7 +16,8 @@ _Antes de comenzar asegúrese de instalar Deno en su entorno de desarrollo._
 
 _Para desplegar el proyecto ejecute el siguiente comando:_
 
-<pre class="prism-code language-bash flex overflow-y-auto rounded border border-gray-200 p-1 px-2 sm:px-3" style="color: rgb(57, 58, 52); background-color: rgb(246, 248, 250);"><code class="pr-2 sm:pr-3"><div class="text-gray-400 token-line text-right select-none">$</div></code><code><div class="token-line" style="color: rgb(57, 58, 52);"><span class="token function" style="color: rgb(215, 58, 73);">deno</span><span class="token plain"> run --allow-net --allow-read --allow-env index.ts</span></div></code></pre>
+<pre class="prism-code language-bash flex overflow-y-auto rounded border border-gray-200 p-1 px-2 sm:px-3" style="color: rgb(57, 58, 52); background-color: rgb(246, 248, 250);"><code class="pr-2 sm:pr-3"><div class="text-gray-400 token-line text-right select-none">$</div></code><code><div class="token-line" style="color: rgb(57, 58, 52);"><span class="token function" style="color: rgb(215, 58, 73);">deno</span><span class="token plain">
+deno run --allow-env --allow-net --allow-write --allow-read --allow-plugin --unstable</span></div></code></pre>
 
 
 <!--## Construido con 🛠️

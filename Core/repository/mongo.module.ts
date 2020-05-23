@@ -19,15 +19,19 @@ async function find<type>(collection: string, filter?: any) {
   });
 }
 
-function findOne<type>(collection: string, filter?: any) {
-  return database.collection(collection)
+async function findOne<type>(collection: string, filter?: any) {
+  const result = await database.collection(collection)
     .findOne(filter);
+  
+  result._id = result._id.$oid;
+  return result;
 }
 
-function insertOne<type>(collection: string, document: type) {
-  const result: any = database.collection(collection)
+async function insertOne<type>(collection: string, document: type) {
+  const { $oid } = await database.collection(collection)
     .insertOne(document);
-  return result;
+  
+  return findOne<type>(collection, {_id: {$oid: $oid}});
 }
 
 export default {

@@ -18,4 +18,12 @@ router.get("/task/:id", (context) => {
   }
 });
 
+router.post("/task", async (context) => {
+  if(context.request.hasBody){
+    const { value } = await context.request.body();
+    const result = await controller.addTask(value);
+    response.success(context, result);
+  }
+});
+
 export default router;

@@ -19,6 +19,11 @@ async function find<type>(collection: string, filter?: any) {
   });
 }
 
+function findOne<type>(collection: string, filter?: any) {
+  return database.collection(collection)
+    .findOne(filter);
+}
+
 function insertOne<type>(collection: string, document: type) {
   const result: any = database.collection(collection)
     .insertOne(document);
@@ -28,5 +33,6 @@ function insertOne<type>(collection: string, document: type) {
 export default {
   connect,
   find,
+  findOne,
   insertOne
 };

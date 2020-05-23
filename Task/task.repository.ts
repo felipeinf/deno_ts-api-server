@@ -1,18 +1,17 @@
 import { Task } from "./task.model.ts";
+import mongo from "./../Core/repository/mongo.module.ts";
 
-
-const tasks: Task[] = [
-  { id: "1", description: "Document API", completed: false },
-  { id: "2", description: "Make development guidelines", completed: false },
-  { id: "3", description: "Inquire about Deno", completed: false }
-];
 
 function getAllTask() {
-  return tasks;
+ return mongo.find('task');
 }
 
 function getTask(id: string) {
-  return tasks.find((task) => task.id === id);
+  return mongo.find('task', { _id: id });
 }
 
-export default { getAllTask, getTask };
+function addTask(task: Task): Promise<Task> {
+  return mongo.insertOne('task',task);
+}
+
+export default { getAllTask, getTask, addTask };

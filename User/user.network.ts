@@ -10,4 +10,11 @@ router.get('/user/all', async (context) => {
   response.success(context, result);
 });
 
+router.get('/user/:id', async (context) => {
+  if (context.params && context.params.id) {
+    const id: string = context.params.id;
+    const result = await controller.getUser(id);
+    response.success(context, result);
+  }
+});
 export default router;

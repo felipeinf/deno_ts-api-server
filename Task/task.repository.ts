@@ -7,7 +7,7 @@ function getAllTask() {
 }
 
 function getTask(id: string) {
-  return mongo.find('task', { _id: id });
+  return mongo.findOne('task', { _id: id });
 }
 
 function addTask(task: Task): Promise<Task> {

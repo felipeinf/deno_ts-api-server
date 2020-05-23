@@ -10,10 +10,10 @@ router.get("/task/all", async (context) => {
   response.success(context, result);
 });
 
-router.get("/task/:id", (context) => {
+router.get("/task/:id", async (context) => {
   if (context.params && context.params.id) {
     const id: string = context.params.id;
-    const result = controller.getTask(id);
+    const result = await controller.getTask(id);
     response.success(context, result);
   }
 });

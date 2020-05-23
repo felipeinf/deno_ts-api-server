@@ -17,4 +17,11 @@ router.get('/user/:id', async (context) => {
     response.success(context, result);
   }
 });
+
+router.post('/user', async (context) => {
+  const { value } = await context.request.body();
+  const result = await controller.addUser(value);
+  return response.success(context, result);
+});
+
 export default router;

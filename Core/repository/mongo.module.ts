@@ -19,6 +19,14 @@ async function find<type>(collection: string, filter?: any) {
   });
 }
 
-export const db = client.database("blyke");
+function insertOne<type>(collection: string, document: type) {
+  const result: any = database.collection(collection)
+    .insertOne(document);
+  return result;
+}
 
-export default { connect };
+export default {
+  connect,
+  find,
+  insertOne
+};

@@ -2,8 +2,8 @@ import repository from "./task.repository.ts";
 import { Task } from "./task.model.ts";
 
 
-function getAllTask() {
-  return repository.getAllTask();
+function getAllTasks() {
+  return repository.getAllTasks();
 }
 
 function getTask(id: string) {
@@ -21,4 +21,4 @@ function addTask(task: Task) {
   return repository.addTask(task);
 }
 
-export default { getAllTask, getTask, getAllUserTasks, addTask };
+export default { getAllTasks, getTask, getAllUserTasks, addTask };

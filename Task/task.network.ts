@@ -18,6 +18,14 @@ router.get("/task/:id", async (context) => {
   }
 });
 
+router.get("/task/all/:userId", async (context) => {
+  if (context.params && context.params.userId) {
+    const userId: string = context.params.userId;
+    const result = await controller.getAllUserTasks(userId);
+    response.success(context, result);
+  }
+});
+
 router.post("/task", async (context) => {
   if(context.request.hasBody){
     const { value } = await context.request.body();

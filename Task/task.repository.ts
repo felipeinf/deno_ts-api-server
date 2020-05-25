@@ -10,8 +10,12 @@ function getTask(id: string) {
   return mongo.findOne('task', {_id: {$oid: id}});
 }
 
+function getAllUserTasks(userId: string) {
+  return mongo.find('task', { userId })
+}
+
 function addTask(task: Task): Promise<Task> {
   return mongo.insertOne('task',task);
 }
 
-export default { getAllTask, getTask, addTask };
+export default { getAllTask, getTask, getAllUserTasks ,addTask };

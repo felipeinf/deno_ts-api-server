@@ -2,7 +2,7 @@ import { Task } from "./task.model.ts";
 import mongo from "./../Core/repository/mongo.module.ts";
 
 
-function getAllTask() {
+function getAllTasks() {
  return mongo.find('task');
 }
 
@@ -18,4 +18,4 @@ function addTask(task: Task): Promise<Task> {
   return mongo.insertOne('task',task);
 }
 
-export default { getAllTask, getTask, getAllUserTasks ,addTask };
+export default { getAllTasks, getTask, getAllUserTasks ,addTask };

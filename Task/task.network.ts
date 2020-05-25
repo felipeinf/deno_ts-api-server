@@ -6,7 +6,7 @@ import response from "../Core/network/response.module.ts";
 const router = new Router();
 
 router.get("/task/all", async (context) => {
-  const result = await controller.getAllTask(); 
+  const result = await controller.getAllTasks(); 
   response.success(context, result);
 });
 

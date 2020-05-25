@@ -10,6 +10,10 @@ function getTask(id: string) {
   return repository.getTask(id);
 }
 
+function getAllUserTasks(userId: string) {
+  return repository.getAllUserTasks(userId);
+}
+
 function addTask(task: Task) {
   task.completed = false;
   task.createdAt = new Date();
@@ -17,4 +21,4 @@ function addTask(task: Task) {
   return repository.addTask(task);
 }
 
-export default { getAllTask, getTask, addTask };
+export default { getAllTask, getTask, getAllUserTasks, addTask };

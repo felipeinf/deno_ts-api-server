@@ -18,10 +18,15 @@ router.get('/user/all', async (context) => {
 });
 
 router.get('/user/:id', async (context) => {
-  if (context.params && context.params.id) {
-    const id: string = context.params.id;
-    const result = await controller.getUser(id);
-    response.success(context, result);
+  try {
+    if (context.params && context.params.id) {
+      const id: string = context.params.id;
+      const result = await controller.getUser(id);
+      response.success(context, result);
+    }
+  } 
+  catch (error) {
+    response.error(error, "Unknown error");
   }
 });
 

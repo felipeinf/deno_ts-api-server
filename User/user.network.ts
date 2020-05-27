@@ -31,9 +31,14 @@ router.get('/user/:id', async (context) => {
 });
 
 router.post('/user', async (context) => {
-  const { value } = await context.request.body();
-  const result = await controller.addUser(value);
-  return response.success(context, result);
+  try {
+    const { value } = await context.request.body();
+    const result = await controller.addUser(value);
+    return response.success(context, result);
+  } 
+  catch (error) {
+    response.error(error, "Unknown error");
+  }
 });
 
 export default router;

@@ -8,8 +8,6 @@ const router = new Router();
 router.get('/user/all', async (context) => {
   try {
     const result = await controller.getAllUser(); 
-  const result = await controller.getAllUser(); 
-    const result = await controller.getAllUser(); 
     response.success(context, result);
   } 
   catch (error) {

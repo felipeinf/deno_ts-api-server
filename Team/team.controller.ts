@@ -6,3 +6,7 @@ function getAllTeams() {
   return repository.getAllTeams();
 }
 
+function getTeam(teamId: string) {
+  return repository.getTeam(teamId);
+}
+

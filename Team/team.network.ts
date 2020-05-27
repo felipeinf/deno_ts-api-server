@@ -15,4 +15,17 @@ router.get('team/all', async (context) => {
   }
 });
 
+router.get('team/:id', async (context) => {
+  try {
+    if (context.params && context.params.userId) {
+      const teamId: string = context.params.id as string;
+      const result = await controller.getTeam(teamId);
+      response.success(context, result);
+    }
+  } 
+  catch (error) {
+    response.error(error, "Unknown error");
+  }
+});
+
 export default router;

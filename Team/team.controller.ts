@@ -10,3 +10,8 @@ function getTeam(teamId: string) {
   return repository.getTeam(teamId);
 }
 
+function addTeam(team: Team) {
+  return repository.addTeam(team);
+}
+
+export default { getAllTeams, getTeam, addTeam };

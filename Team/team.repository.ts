@@ -5,4 +5,7 @@ function getAllTeams() {
   return mongo.find('team');
 }
 
-export default {  };
+function getTeam(teamId: string) {
+  return mongo.findOne('team', { _id: { $oid: teamId }});
+}
+

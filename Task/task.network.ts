@@ -16,10 +16,15 @@ router.get("/task/all", async (context) => {
 });
 
 router.get("/task/:id", async (context) => {
-  if (context.params && context.params.id) {
-    const id: string = context.params.id;
-    const result = await controller.getTask(id);
-    response.success(context, result);
+  try {
+    if (context.params && context.params.id) {
+      const id: string = context.params.id;
+      const result = await controller.getTask(id);
+      response.success(context, result);
+    }
+  } 
+  catch (error) {
+    response.error(error, "Unknown error");
   }
 });
 

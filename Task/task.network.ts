@@ -6,8 +6,13 @@ import response from "../Core/network/response.module.ts";
 const router = new Router();
 
 router.get("/task/all", async (context) => {
-  const result = await controller.getAllTasks(); 
-  response.success(context, result);
+  try {
+    const result = await controller.getAllTasks(); 
+    response.success(context, result);
+  } 
+  catch (error) {
+    response.error(error, "Unknown error");
+  }
 });
 
 router.get("/task/:id", async (context) => {

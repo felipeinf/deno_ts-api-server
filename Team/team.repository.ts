@@ -9,3 +9,9 @@ function getTeam(teamId: string) {
   return mongo.findOne('team', { _id: { $oid: teamId }});
 }
 
+function addTeam(team: Team) {
+  return mongo.insertOne('team', team);
+}
+
+
+export default { getAllTeams, addTeam, getTeam };

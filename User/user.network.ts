@@ -6,22 +6,39 @@ import controller from "./user.controller.ts";
 const router = new Router();
 
 router.get('/user/all', async (context) => {
+  try {
+    const result = await controller.getAllUser(); 
   const result = await controller.getAllUser(); 
-  response.success(context, result);
+    const result = await controller.getAllUser(); 
+    response.success(context, result);
+  } 
+  catch (error) {
+    response.error(error, "Unknown error");
+  }
 });
 
 router.get('/user/:id', async (context) => {
-  if (context.params && context.params.id) {
-    const id: string = context.params.id;
-    const result = await controller.getUser(id);
-    response.success(context, result);
+  try {
+    if (context.params && context.params.id) {
+      const id: string = context.params.id;
+      const result = await controller.getUser(id);
+      response.success(context, result);
+    }
+  } 
+  catch (error) {
+    response.error(error, "Unknown error");
   }
 });
 
 router.post('/user', async (context) => {
-  const { value } = await context.request.body();
-  const result = await controller.addUser(value);
-  return response.success(context, result);
+  try {
+    const { value } = await context.request.body();
+    const result = await controller.addUser(value);
+    return response.success(context, result);
+  } 
+  catch (error) {
+    response.error(error, "Unknown error");
+  }
 });
 
 export default router;

@@ -29,10 +29,15 @@ router.get("/task/:id", async (context) => {
 });
 
 router.get("/task/all/:userId", async (context) => {
-  if (context.params && context.params.userId) {
-    const userId: string = context.params.userId;
-    const result = await controller.getAllUserTasks(userId);
-    response.success(context, result);
+  try {
+    if (context.params && context.params.userId) {
+      const userId: string = context.params.userId;
+      const result = await controller.getAllUserTasks(userId);
+      response.success(context, result);
+    }
+  } 
+  catch (error) {
+    response.error(error, "Unknown error");
   }
 });
 

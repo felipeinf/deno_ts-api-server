@@ -42,10 +42,15 @@ router.get("/task/all/:userId", async (context) => {
 });
 
 router.post("/task", async (context) => {
-  if(context.request.hasBody){
-    const { value } = await context.request.body();
-    const result = await controller.addTask(value);
-    response.success(context, result);
+  try {
+    if(context.request.hasBody){
+      const { value } = await context.request.body();
+      const result = await controller.addTask(value);
+      response.success(context, result);
+    }
+  } 
+  catch (error) {
+    response.error(error, "Unknown error");
   }
 });
 

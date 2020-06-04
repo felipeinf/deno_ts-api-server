@@ -4,10 +4,8 @@ import "https://deno.land/x/dotenv/load.ts";
 
 const client: MongoClient = new MongoClient();
 const database: Database = client.database(`${Deno.env.get('MONGO_DATABASE_NAME')}`)
+client.connectWithUri(`${Deno.env.get('MONGO_URI')}`);
 
-function connect(): void {
-  client.connectWithUri(`${Deno.env.get('MONGO_URI')}`);
-}
 
 async function find<type>(collection: string, filter?: any) {
   const result: any[] = await database.collection(collection)
@@ -34,9 +32,20 @@ async function insertOne<type>(collection: string, document: type) {
   return findOne<type>(collection, {_id: {$oid: $oid}});
 }
 
+async function updateOne<type>(collection: string, id: string, document: type) {
+  const result = await database.collection(collection)
+    .updateOne(
+      { _id: { "$oid": id }},
+      { $set: document },
+    );
+  console.log(result);
+    
+  return findOne<type>(collection, { _id: { $oid: id }});
+}
+
 export default {
-  connect,
   find,
   findOne,
-  insertOne
+  insertOne,
+  updateOne
 };
